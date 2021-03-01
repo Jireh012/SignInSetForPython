@@ -1,0 +1,4 @@
+[INFO  2021-01-19T10:53:20,495 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
+[INFO  2021-01-19T10:53:20,564 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
+[INFO  2021-01-19T10:53:26,762 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
+[INFO  2021-01-19T10:53:26,911 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:8080 

@@ -13,7 +13,6 @@ import sys
 import time
 import traceback
 
-
 try:
     from utils.config import load_config
     from utils.log import get_logger
@@ -23,8 +22,11 @@ try:
     from utils.version import check_script_update
     from utils.version import SCRIPT_VERSION
 
-    from pojie52.SignIn52pj import variable_52pj
-    from pojie52.SignIn52pj import conventional_52pj
+    from signin.WuAiPoJie import variable_52pj
+    from signin.WuAiPoJie import conventional_52pj
+
+    from signin.HouQiJun import variable_hqj
+    from signin.HouQiJun import conventional_hqj
 
 
 except ImportError as e:
@@ -33,26 +35,27 @@ except ImportError as e:
     cliwait()
     exit()
 
-
 logger = get_logger('Run')
 
 
 def conventional():
-
     pojie52 = CFG['52pojie']
+    houqijun = CFG['houqijun']
     mcfg = CFG['main']
     ftqq = CFG['ftqq']
 
-    conventional_52pj(pojie52,ftqq['skey'])
+    # 执行签到函数
+    conventional_52pj(pojie52, ftqq['skey'])
+    conventional_hqj(houqijun, ftqq['skey'])
 
     data = []
     logger.info(f'脚本版本:[{SCRIPT_VERSION}]')
-    data.append(f'#### {"=" * 30 }\n'
+    data.append(f'#### {"=" * 30}\n'
                 f'#### 脚本版本:[{SCRIPT_VERSION}]')
 
     end_time = time.time()
-    logger.info(f'脚本耗时:[{round(end_time-start_time,4)}]s')
-    data.append(f'#### 任务耗时:[{round(end_time-start_time,4)}]s')
+    logger.info(f'脚本耗时:[{round(end_time - start_time, 4)}]s')
+    data.append(f'#### 任务耗时:[{round(end_time - start_time, 4)}]s')
 
     message = '\n'.join(data)
 
@@ -90,12 +93,16 @@ def variable():
     data = []
 
     cookie_52pj = os.environ.get('cookie_52pj')
+    username_houqijun = os.environ.get('username_houqijun')
+    password_houqijun = os.environ.get('password_houqijun')
 
-    variable_52pj(cookie_52pj,SCKEY)
+    # 执行签到函数
+    variable_52pj(cookie_52pj, SCKEY)
+    variable_hqj(username_houqijun, password_houqijun, SCKEY)
 
     end_time = time.time()
-    logger.info(f'脚本耗时:[{round(end_time-start_time,4)}]s')
-    data.append(f'#### 任务耗时:[{round(end_time-start_time,4)}]s')
+    logger.info(f'脚本耗时:[{round(end_time - start_time, 4)}]s')
+    data.append(f'#### 任务耗时:[{round(end_time - start_time, 4)}]s')
 
     message = '\n'.join(data)
 
@@ -132,6 +139,7 @@ def message_push(title: str, message: str, error: bool = False):
     推送通知
     '''
     ftqq = CFG['ftqq']
+
     email = CFG['email']
     if ftqq['enable']:
         if (ftqq['only_on_error'] == True and error) or (ftqq['only_on_error'] == False):
@@ -152,7 +160,6 @@ def message_push(title: str, message: str, error: bool = False):
 if __name__ == '__main__':
     run_type = sys.argv[1]
     start_time = time.time()
-
     if "1" in run_type:
         try:
             logger.info('载入配置文件')
@@ -213,7 +220,3 @@ if __name__ == '__main__':
             cliwait()
     else:
         print('该启动方式不存在:', run_type)
-
-
-
-

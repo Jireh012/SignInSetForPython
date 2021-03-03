@@ -64,11 +64,11 @@ def variable_52pj(cookie, SCKEY):
         return msg
 
 
-def conventional_52pj(pojie52: dict, SCKEY):
-    if pojie52:
+def conventional_52pj(wuaipojie: dict, SCKEY):
+    if wuaipojie:
         print("----------吾爱破解开始尝试签到----------")
         msg = ""
-        for i, item in enumerate(pojie52, 1):
+        for i, item in enumerate(wuaipojie, 1):
             msg += f"第 {i + 1} 个账号开始执行任务\n"
             msg += sign_in_52pj(item['cookie'], item['tag'], SCKEY)
 

@@ -10,6 +10,8 @@ tag = ""
 [main]
 # 是否开启调试模式, [false]
 debug = false
+# 是否检查更新, [true]
+check_update = true
 
 # ====推送设置======================================
 [ftqq]

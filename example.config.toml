@@ -1,0 +1,38 @@
+# 配置文件,"[]"中的值为默认配置
+
+# 支持多账户签到
+[[52pojie]]
+cookie = ""
+# 标记 用于区分账号
+tag = ""
+
+# ====其他配置======================================
+[main]
+# 是否开启调试模式, [false]
+debug = false
+
+# ====推送设置======================================
+[ftqq]
+# 方糖气球模块,用于推送运行结果到微信
+# 是否开启方糖气球模块,开启后会将结果推送至微信, [false]
+enable = false
+# 方糖气球SKEY,获取地址:(http://sc.ftqq.com/)
+skey = ""
+# 设置为true后只会在程序出错时才会推送消息, [false]
+only_on_error = false
+
+[email]
+# 邮件模块,用于推送结果到邮箱
+# 是否开启邮箱模块, [false]
+enable = false
+# SMTP服务器设置
+port = 465
+server = "smtp.qq.com"
+# SMTP登陆凭据
+password = ''
+user = 'example@mail.com'
+# 收发信箱设置
+recvaddr = 'recv@example.com'
+sendaddr = 'send@example.com'
+# 设置为true后只会在程序出错时才会推送消息,[false]
+only_on_error = false

@@ -2,14 +2,14 @@
 # @Author       : Chr_
 # @Date         : 2020-07-29 14:21:39
 # @LastEditors  : Jireh
-# @LastEditTime : 2021-03-02 09:58:39
+# @LastEditTime : 2021-03-03 13:56:39
 # @Description  : 读取并验证配置
 '''
 
 import os
 import toml
 import chardet
-from log import get_logger, init_logger
+from utils.log import get_logger, init_logger
 
 logger = get_logger('Setting')
 
@@ -92,16 +92,20 @@ def verify_config(cfg: dict) -> dict:
     返回:
         dict: 验证过的配置字典,剔除错误的和不必要的项目
     '''
-    vcfg = {'main': {'debug': False},
+    vcfg = {'main': {'check_update': False,'debug': False},
             'ftqq': {'enable': False, 'skey': '', 'only_on_error': False},
             'email': {'port': 465, 'server': '', 'password': '', 'user': '',
                       'recvaddr': '', 'sendaddr': '', 'only_on_error': False},
-            'accounts': []}
+            '52pojie': []}
+
+    pojie52 = cfg.get('52pojie', {})
+    vcfg['52pojie'] = pojie52
 
     main = cfg.get('main', {})
     if main and isinstance(main, dict):
         debug = bool(main.get('debug', False))
-        vcfg['main'] = {'debug': debug}
+        check_update = bool(main.get('check_update', True))
+        vcfg['main'] = {'check_update': check_update,'debug': debug}
     else:
         logger.debug('[main]节配置有误或者未配置,将使用默认配置')
 

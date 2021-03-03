@@ -36,16 +36,16 @@ def sign_in_52pj(cookie: str, tag: str, SCKEY: str) -> str:
             print("cookie_52pj失效，需重新获取,标识为：", tag)
             msg += "cookie_52pj失效，需重新获取,标识为：" + tag
         elif "恭喜" in c:
-            print("吾爱破解签到成功")
-            msg += "吾爱破解签到成功"
+            print("吾爱破解签到成功标识为：", tag)
+            msg += "吾爱破解签到成功标识为：", tag
         elif "不是进行中的任务" in c:
-            print("吾爱破解已经签到")
-            msg += "吾爱破解已经签到"
+            print("吾爱破解已经签到,标识为：", tag)
+            msg += "吾爱破解已经签到标识为：", tag
         else:
             print(c)
     except:
-        print("吾爱破解出错")
-        msg += "吾爱破解出错"
+        print("吾爱破解出错标识为：", tag)
+        msg += "吾爱破解出错标识为：", tag
     return msg + "\n"
 
 

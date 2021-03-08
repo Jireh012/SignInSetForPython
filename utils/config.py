@@ -98,12 +98,16 @@ def verify_config(cfg: dict) -> dict:
                       'recvaddr': '', 'sendaddr': '', 'only_on_error': False},
             '52pojie': [],
             'houqijun': [],
+            '52cxy': [],
             }
 
     wuaipojie = cfg.get('52pojie', {})
     houqijun = cfg.get('houqijun', {})
+    wuaicxy = cfg.get('52cxy', {})
+
     vcfg['52pojie'] = wuaipojie
     vcfg['houqijun'] = houqijun
+    vcfg['52cxy'] = wuaicxy
 
     main = cfg.get('main', {})
     if main and isinstance(main, dict):

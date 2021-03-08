@@ -99,15 +99,18 @@ def verify_config(cfg: dict) -> dict:
             '52pojie': [],
             'houqijun': [],
             '52cxy': [],
+            'smzdm': [],
             }
 
     wuaipojie = cfg.get('52pojie', {})
     houqijun = cfg.get('houqijun', {})
     wuaicxy = cfg.get('52cxy', {})
+    smzdm = cfg.get('smzdm', {})
 
     vcfg['52pojie'] = wuaipojie
     vcfg['houqijun'] = houqijun
     vcfg['52cxy'] = wuaicxy
+    vcfg['smzdm'] = smzdm
 
     main = cfg.get('main', {})
     if main and isinstance(main, dict):

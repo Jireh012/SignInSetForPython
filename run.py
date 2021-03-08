@@ -28,12 +28,18 @@ try:
     from signin.HouQiJun import variable_hqj
     from signin.HouQiJun import conventional_hqj
 
+    from signin.WuAiProgrammer import variable_52cxy
+    from signin.WuAiProgrammer import conventional_52cxy
+
+    from signin.Smzdm import variable_smzdm
+    from signin.Smzdm import conventional_smzdm
+
 
 except ImportError as e:
     print(e)
-    print('导入模块出错,请执行 pip install -r requirements.txt 安装所需的依赖库')
-    cliwait()
-    exit()
+print('导入模块出错,请执行 pip install -r requirements.txt 安装所需的依赖库')
+cliwait()
+exit()
 
 logger = get_logger('Run')
 
@@ -41,12 +47,17 @@ logger = get_logger('Run')
 def conventional():
     pojie52 = CFG['52pojie']
     houqijun = CFG['houqijun']
+    wuaicxy = CFG['52cxy']
+    smzdm = CFG['smzdm']
+
     mcfg = CFG['main']
     ftqq = CFG['ftqq']
 
     # 执行签到函数
     conventional_52pj(pojie52, ftqq['skey'])
     conventional_hqj(houqijun, ftqq['skey'])
+    conventional_52cxy(wuaicxy, ftqq['skey'])
+    conventional_smzdm(smzdm, ftqq['skey'])
 
     data = []
     logger.info(f'脚本版本:[{SCRIPT_VERSION}]')
@@ -96,9 +107,14 @@ def variable():
     username_houqijun = os.environ.get('username_houqijun')
     password_houqijun = os.environ.get('password_houqijun')
 
+    cookie_52cxy = os.environ.get('cookie_52cxy')
+    cookie_smzdm = os.environ.get('cookie_smzdm')
+
     # 执行签到函数
     variable_52pj(cookie_52pj, SCKEY)
     variable_hqj(username_houqijun, password_houqijun, SCKEY)
+    variable_52cxy(cookie_52cxy, SCKEY)
+    variable_smzdm(cookie_smzdm, SCKEY)
 
     end_time = time.time()
     logger.info(f'脚本耗时:[{round(end_time - start_time, 4)}]s')

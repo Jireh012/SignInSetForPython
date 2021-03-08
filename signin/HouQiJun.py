@@ -1,3 +1,11 @@
+'''
+# @Author       : Jireh
+# @Date         : 2021-03-2 14:21:39
+# @LastEditors  : Jireh
+# @LastEditTime : 2021-03-05 09:16:39
+# @Description  : 后期菌签到逻辑
+'''
+
 # -*- coding: utf8 -*-
 import requests, os
 import json

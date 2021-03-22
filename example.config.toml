@@ -10,12 +10,20 @@ tag = ""
 username = ""
 password = ""
 
+[[smzdm]]
+cookie = ""
+tag=""
+
+[[52cxy]]
+cookie = ""
+tag=""
+
 # ====其他配置======================================
 [main]
 # 是否开启调试模式, [false]
 debug = false
 # 是否检查更新, [true]
-check_update = true
+check_update = false
 
 # ====推送设置======================================
 [ftqq]
